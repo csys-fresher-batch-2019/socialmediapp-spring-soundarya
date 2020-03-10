@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<style>
+body {
+  margin: 0;
+ font-family: cursive;
+}
+
+.blinking{
+    animation:blinkingText 1.2s infinite;
+}
+@keyframes blinkingText{
+    0%{     color:#444;    }
+    49%{    color: #444; }
+    60%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color: #444;    }
+}
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: cursive;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #51c6f0;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="active" href="index.jsp">Home</a>
+  <a href="login.jsp">User</a>
+  <a href="loginadmin.jsp">Admin</a>
+  <a href="registeruser.jsp">Sign up</a>
+  <image src="images/simage.jpg" align="right" width="50px">
+</div>
+</body>
+</html>
