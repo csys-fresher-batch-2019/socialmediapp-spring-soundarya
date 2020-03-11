@@ -2,8 +2,6 @@ package com.soundarya.mediaApp.dao;
 
 import java.util.List;
 
-import com.soundarya.mediaApp.dao.impl.LikesImpl;
-import com.soundarya.mediaApp.dao.impl.UserListImpl;
 import com.soundarya.mediaApp.domain.Likes;
 import com.soundarya.mediaApp.exception.DBException;
 

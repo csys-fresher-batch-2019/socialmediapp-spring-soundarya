@@ -3,6 +3,10 @@ package com.soundarya.mediaApp.domain;
 public class Login {
 	private String userName;
 	private String userPassword;
+	@Override
+	public String toString() {
+		return "Login [userName=" + userName + ", userPassword=" + userPassword + "]";
+	}
 	public String getUserName() {
 		return userName;
 	}

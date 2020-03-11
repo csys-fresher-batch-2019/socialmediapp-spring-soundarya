@@ -1,10 +1,16 @@
 package com.soundarya.mediaApp.domain;
 
 public class FriendRequest {
-	 private String requestor;
-	 private String acceptor;
-	 private String currentStatus;
-	
+	private String requestor;
+	private String acceptor;
+	private String currentStatus;
+
+	@Override
+	public String toString() {
+		return "FriendRequest [requestor=" + requestor + ", acceptor=" + acceptor + ", currentStatus=" + currentStatus
+				+ "]";
+	}
+
 	public String getRequestor() {
 		return requestor;
 	}
@@ -27,14 +33,6 @@ public class FriendRequest {
 
 	public void setCurrentStatus(String currentStatus) {
 		this.currentStatus = currentStatus;
-	}
-
-	
-
-	@Override
-	public String toString() {
-		return "friendRequestClass [requestor=" + requestor + ", acceptor=" + acceptor + ", currentStatus="
-				+ currentStatus + "]";
 	}
 
 }

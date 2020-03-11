@@ -1,7 +1,6 @@
 package com.soundarya.mediaApp.servlet;
-import java.io.IOException;
-import java.io.PrintWriter;
 
+import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,28 +18,26 @@ import com.soundarya.mediaApp.factory.DAOFactory;
 public class LikesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Likes p=new Likes();
-		PrintWriter out= response.getWriter();
-		HttpSession session=request.getSession();  
-		String n=(String)session.getAttribute("semail"); 
-		int s=Integer.parseInt(request.getParameter("pid"));
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		Likes p = new Likes();
+		HttpSession session = request.getSession();
+		String n = (String) session.getAttribute("semail");
+		int s = Integer.parseInt(request.getParameter("pid"));
 		System.out.println(n);
 		System.out.println(s);
 		p.setLikePostId(s);
 		p.setLikeEmail(n);
-		LikesDAO li=DAOFactory.getLikesDAO();
+		LikesDAO li = DAOFactory.getLikesDAO();
 
 		try {
 			li.addLikes(p);
 		} catch (DBException e) {
 			e.printStackTrace();
 		}
-		//out.print("<script>alert(Liked this post successfully);</script>");
+		// out.print("<script>alert(Liked this post successfully);</script>");
 		response.sendRedirect("userhome.jsp");
 	}
-
-	
 
 }

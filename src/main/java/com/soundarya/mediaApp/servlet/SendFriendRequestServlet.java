@@ -1,4 +1,5 @@
 package com.soundarya.mediaApp.servlet;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -18,19 +19,15 @@ import com.soundarya.mediaApp.factory.DAOFactory;
 public class SendFriendRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		FriendRequest f = new FriendRequest();
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FriendRequest f=new FriendRequest();
-		
-	/*	f.setRequestor(request.getParameter("requestor"));
-		f.setAcceptor(request.getParameter("acceptor"));*/
-		HttpSession session=request.getSession();  
-		String n=(String)session.getAttribute("semail"); 
-		String e=request.getParameter("email");
-		
-		f.setRequestor((String)session.getAttribute("semail"));
+		HttpSession session = request.getSession();
+
+		f.setRequestor((String) session.getAttribute("semail"));
 		f.setAcceptor(request.getParameter("email"));
-		FriendRequestDAO fr=DAOFactory.getFriendRequestDAO();
+		FriendRequestDAO fr = DAOFactory.getFriendRequestDAO();
 
 		try {
 			fr.insertRequest(f);
@@ -38,7 +35,7 @@ public class SendFriendRequestServlet extends HttpServlet {
 			e1.printStackTrace();
 		}
 		response.sendRedirect("userhome.jsp");
-		
+
 	}
 
 }

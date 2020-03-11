@@ -10,7 +10,13 @@ public class Posts {
 	 private String viewability;
 	 private String datePosted;
 	 
-	 public String getUserName() {
+	 @Override
+	public String toString() {
+		return "Posts [userName=" + userName + ", postId=" + postId + ", email=" + email + ", postType=" + postType
+				+ ", caption=" + caption + ", viewability=" + viewability + ", datePosted=" + datePosted + "]";
+	}
+
+	public String getUserName() {
 			return userName;
 		}
 
@@ -95,20 +101,6 @@ public class Posts {
 
 	
 	
-	@Override
-	public String toString() {
-		return "PostsClass [userName=" + userName + ", postId=" + postId + ", email=" + email + ", postType=" + postType
-				+ ", caption=" + caption + ", viewability=" + viewability + ", datePosted=" + datePosted + "]";
-	}
 	
-	public String toString1() {
-		return "PostsClass [userName=" + userName + ",email=" + email + ",  postType=" + postType
-				+ ", caption=" + caption + ",  datePosted=" + datePosted + "]";
-	}
-
-	public String toString2() {
-		return "PostsClass [ postId=" + postId + ", email=" + email + ", postType=" + postType
-				+ ", caption=" + caption + ",  datePosted=" + datePosted + "]";
-	}
 
 }

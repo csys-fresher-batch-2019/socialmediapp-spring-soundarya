@@ -1,4 +1,5 @@
 package com.soundarya.mediaApp.servlet;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -14,46 +15,38 @@ import com.soundarya.mediaApp.dao.UserListDAO;
 import com.soundarya.mediaApp.domain.UserList;
 import com.soundarya.mediaApp.factory.DAOFactory;
 
-
 @WebServlet("/SearchServlet")
 
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		UserList u=new UserList();
-		PrintWriter out = response.getWriter();
-		List<UserList> search=new ArrayList<UserList>();
-	
-		String name=request.getParameter("name");
-		String city=request.getParameter("city");
-		UserListDAO us=DAOFactory.getUserListDAO();
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		 try {
-				search=us.searchByCityAndName(name, city);
-				
-			}
-		catch(Exception e)
-		{
+		PrintWriter out = response.getWriter();
+		List<UserList> search = new ArrayList<UserList>();
+
+		String name = request.getParameter("name");
+		String city = request.getParameter("city");
+		UserListDAO us = DAOFactory.getUserListDAO();
+
+		try {
+			search = us.searchByCityAndName(name, city);
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-			
-		
-		
-		 out.print("<table border=5 cellpadding=10 align=center><tr><th>Profile Picture</th><th>Details</th>");
-		 for (UserList userListClass : search) {
-				System.out.println(userListClass.display1());
-				out.print("<tr><td><img src=images/"+userListClass.getProfilePic()+" height='100' width='100'> </td><td>Name:"+userListClass.getUserName()+"<br>Email:"+userListClass.getEmail()+"<br>Age:"+userListClass.getAge()+"<br>Gender:"+userListClass.getGender()+"</td><td><a href=sendFriendRequest.jsp?email="+userListClass.getEmail()+">Send Friend Request</a></td></tr>");
-				out.print("<br>");
-			}
+
+		out.print("<table border=5 cellpadding=10 align=center><tr><th>Profile Picture</th><th>Details</th>");
+		for (UserList userListClass : search) {
+			out.print("<tr><td><img src=images/" + userListClass.getProfilePic()
+					+ " height='100' width='100'> </td><td>Name:" + userListClass.getUserName() + "<br>Email:"
+					+ userListClass.getEmail() + "<br>Age:" + userListClass.getAge() + "<br>Gender:"
+					+ userListClass.getGender() + "</td><td><a href=sendFriendRequest.jsp?email="
+					+ userListClass.getEmail() + ">Send Friend Request</a></td></tr>");
+			out.print("<br>");
+		}
 		out.print("</table>");
-		
-		
 
 	}
-		
-		
-		//response.sendRedirect("display.jsp");
-	}
-
+}

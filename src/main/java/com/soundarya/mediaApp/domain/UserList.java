@@ -124,23 +124,13 @@ public class UserList {
 	public void setActivestatus(String activestatus) {
 		this.activestatus = activestatus;
 	}
-
 	@Override
 	public String toString() {
-		return "UserListClass [userId=" + userId + ", userName=" + userName + ", email=" + email + ", age=" + age
+		return "UserList [userId=" + userId + ", userName=" + userName + ", email=" + email + ", age=" + age
 				+ ", gender=" + gender + ", dob=" + dob + ", city=" + city + ", country=" + country + ", createdDate="
 				+ createdDate + ", status=" + status + ", activestatus=" + activestatus + ", userPassword="
 				+ userPassword + ", profilePic=" + profilePic + "]";
 	}
-	public String display() {
-		return "UserListClass [userId=" + userId + ",profilePic=" + profilePic +", userName=" + userName + ", email=" + email + ", age=" + age
-				+ ", gender=" + gender + ", dob=" + dob + ", city=" + city + ", country=" + country + ", createdDate="
-				+ createdDate + ", status=" + status + ", activestatus=" + activestatus + "]";
-	}
-
-	public String display1() {
-		return "UserListClass [ profilePic=" + profilePic +",userName=" + userName + ", email=" + email + ", age=" + age
-				+ ", gender=" + gender + "]";
-	}
+	
 	
 }

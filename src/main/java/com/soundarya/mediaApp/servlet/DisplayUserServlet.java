@@ -42,7 +42,6 @@ out.print("<table border=1 align=center><tr><th>User Id</th><th>Profile Picture<
 
 		
 		for (UserList userListClass : display) {
-			System.out.println(userListClass.display());
 			out.print("<tr><td>"+userListClass.getUserId()+"</td><td><img src=images/"+userListClass.getProfilePic()+" height='100' width='100'> </td><td>"+userListClass.getUserName()+"</td><td>"+userListClass.getEmail()+"</td><td>"+userListClass.getAge()+"</td><td>"+userListClass.getGender()+"</td><td>"+userListClass.getDob()+"</td><td>"+userListClass.getCity()+"</td><td>"+userListClass.getCountry()+"</td><td>"+userListClass.getCreatedDate()+"</td><td>"+userListClass.getStatus()+"</td><td>"+userListClass.getActivestatus()+"</td></tr>");
 			out.print("<br>");
 		}

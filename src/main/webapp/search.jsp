@@ -18,7 +18,6 @@
 <title>Search</title>
 </head>
         <%@ include file="header2.html" %>
-
 <body align="center">
 
 <b>
