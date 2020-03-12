@@ -1,5 +1,6 @@
 package com.soundarya.mediaApp.servlet;
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,7 +28,7 @@ public class RegisterUserServlet extends HttpServlet {
 		u.setAge(Integer.parseInt(request.getParameter("age")));
 		//u.setAge(request.getParameter("age"));
 		u.setGender(request.getParameter("gender"));
-		u.setDob(java.sql.Date.valueOf(request.getParameter("dob")));
+		u.setDob(LocalDate.parse(request.getParameter("dob")));
 		u.setCity(request.getParameter("city"));
 		u.setCountry(request.getParameter("country"));
 		u.setStatus(request.getParameter("status"));
@@ -35,7 +36,7 @@ public class RegisterUserServlet extends HttpServlet {
 		u.setProfilePic(request.getParameter("profilepic"));
 		UserListDAO us=DAOFactory.getUserListDAO();
 			try {
-				us.insertUsers(u);
+				us.save(u);
 			} catch (DBException e) {
 				e.printStackTrace();
 			}

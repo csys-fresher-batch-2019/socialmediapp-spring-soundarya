@@ -22,11 +22,11 @@
 <font face="Comic Sans MS">
 <form action="viewPost.jsp" method="post">
 <%
-PostsDAO p=DAOFactory.getPostsDAO();
+	PostsDAO p=DAOFactory.getPostsDAO();
 
 List<Posts> view=new ArrayList<Posts>();
 //view=p.display();
-view=p.displayPublicPost();	
+view=p.findAllPublicPosts();	
 
 out.print("<center><h3>Posts</h3></center>");
 out.print("<table class=table table-striped align=center><tr><th>Post</th><th>Details</th><th></th></tr>");

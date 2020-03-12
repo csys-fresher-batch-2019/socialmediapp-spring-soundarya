@@ -7,13 +7,13 @@ import com.soundarya.mediaApp.exception.DBException;
 
 public interface FriendRequestDAO {
 
-	void insertRequest(FriendRequest ins) throws DBException;
+	void save(FriendRequest ins) throws DBException;
 
-	List<FriendRequest> getFriendrequest(String requestor, String s) throws DBException;
+	List<FriendRequest> findFriendrequest(String requestor, String s) throws DBException;
 
-	List<FriendRequest> getRequestorList(String requestor) throws DBException;
+	List<FriendRequest> findRequestorList(String requestor) throws DBException;
 
-	List<FriendRequest> getAcceptorList(String requestor) throws DBException;
+	List<FriendRequest> findAcceptorList(String requestor) throws DBException;
 
 	void updateStatus(String currentStatus, String requestor, String acceptor) throws DBException;
 

@@ -31,7 +31,7 @@ public class SearchServlet extends HttpServlet {
 		UserListDAO us = DAOFactory.getUserListDAO();
 
 		try {
-			search = us.searchByCityAndName(name, city);
+			search = us.findByCityAndName(name, city);
 
 		} catch (Exception e) {
 			e.printStackTrace();

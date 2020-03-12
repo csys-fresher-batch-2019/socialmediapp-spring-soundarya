@@ -29,7 +29,7 @@ public class ViewFriendsServlet extends HttpServlet {
 		FriendRequestDAO fr=DAOFactory.getFriendRequestDAO();
 
 		try {
-			view=fr.getFriendrequest(req, sts);
+			view=fr.findFriendrequest(req, sts);
 		}
 		catch(Exception e)
 		{

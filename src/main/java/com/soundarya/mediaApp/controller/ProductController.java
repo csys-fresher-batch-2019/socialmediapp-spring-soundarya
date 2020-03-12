@@ -1,10 +1,11 @@
 package com.soundarya.mediaApp.controller;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,9 +22,9 @@ import com.soundarya.mediaApp.factory.DAOFactory;
 @RequestMapping("api")
 
 public class ProductController {
-	@GetMapping("/RegisterUser")
+	@PostMapping("/RegisterUser")
 	public MessageDTO register(@RequestParam("username") String userName, @RequestParam("useremail") String userEmail,
-			@RequestParam("age") int age, @RequestParam("gender") String gender, @RequestParam("dob") Date dob,
+			@RequestParam("age") int age, @RequestParam("gender") String gender, @RequestParam("dob") String dob,
 			@RequestParam("city") String city, @RequestParam("country") String country,
 			@RequestParam("status") String status, @RequestParam("password") String password,
 			@RequestParam("profilepic") String profilePic) throws Exception {
@@ -33,7 +34,7 @@ public class ProductController {
 		user.setEmail(userEmail);
 		user.setAge(age);
 		user.setGender(gender);
-		user.setDob(dob);
+		user.setDob(LocalDate.parse(dob));
 		user.setCity(city);
 		user.setCountry(country);
 		user.setStatus(status);
@@ -41,7 +42,7 @@ public class ProductController {
 		user.setProfilePic(profilePic);
 		UserListDAO us = DAOFactory.getUserListDAO();
 
-		int a = us.insertUsers(user);
+		int a = us.save(user);
 		if (a == 1) {
 			msg.setInfoMessage("Successfully Registered");
 		} else {
@@ -56,7 +57,7 @@ public class ProductController {
 			throws Exception {
 		UserListDAO us = DAOFactory.getUserListDAO();
 		List<UserList> l = new ArrayList<UserList>();
-		l = us.searchByCityAndName(nameLike, city);
+		l = us.findByCityAndName(nameLike, city);
 		return l;
 	}
 
@@ -82,7 +83,7 @@ public class ProductController {
 	public List<FriendRequest> ViewFriendRequest(@RequestParam("semail") String email) throws DBException {
 		FriendRequestDAO dao = DAOFactory.getFriendRequestDAO();
 		List<FriendRequest> l = new ArrayList<FriendRequest>();
-		l = dao.getAcceptorList(email);
+		l = dao.findAcceptorList(email);
 		return l;
 	}
 }

@@ -24,7 +24,7 @@
 f.setRequestor((String)session.getAttribute("semail"));
 f.setAcceptor(request.getParameter("email"));
 
-fr.insertRequest(f);
+fr.save(f);
 response.sendRedirect("userhome.jsp");
 %>
 </form>

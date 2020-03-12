@@ -26,7 +26,7 @@ public class UsersCount extends HttpServlet {
 
     		 int count = 0;
 			try {
-				count=us.noOfUsers();
+				count=us.countNoOfUsers();
 			} catch (DBException e) {
 				e.printStackTrace();
 			}

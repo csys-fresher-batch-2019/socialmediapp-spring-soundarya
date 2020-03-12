@@ -40,7 +40,7 @@ String name=request.getParameter("name");
 String city=request.getParameter("city");
 if(name!=null && city!=null){
  try {
-		search=us.searchByCityAndName(name, city);
+		search=us.findByCityAndName(name, city);
 		
 	}
 catch(Exception e)
@@ -52,7 +52,6 @@ catch(Exception e)
 
  out.print("<div class=container><table class=table table-striped align=center><tr><td colspan=2><b>Profiles</b></td></tr>");
  for (UserList userListClass : search) {
-		System.out.println(userListClass.display1());
 		out.print("<tr><td><img src=images/"+userListClass.getProfilePic()+" height='100' width='100'> </td><td>Name:"+userListClass.getUserName()+"<br>Email:"+userListClass.getEmail()+"<br>Age:"+userListClass.getAge()+"<br>Gender:"+userListClass.getGender()+"<br><a href=sendFriendRequest.jsp?email="+userListClass.getEmail()+"><button type=button class=btn btn-success>Send Request</button></a></td></tr>");
 		out.print("<br>");
 	}

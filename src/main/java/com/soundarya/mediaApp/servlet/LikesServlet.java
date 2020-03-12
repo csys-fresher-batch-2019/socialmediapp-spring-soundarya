@@ -32,7 +32,7 @@ public class LikesServlet extends HttpServlet {
 		LikesDAO li = DAOFactory.getLikesDAO();
 
 		try {
-			li.addLikes(p);
+			li.save(p);
 		} catch (DBException e) {
 			e.printStackTrace();
 		}

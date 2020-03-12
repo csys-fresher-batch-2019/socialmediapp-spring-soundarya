@@ -3,6 +3,7 @@ package com.soundarya.mediaApp.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class CommentsImpl implements CommentsDAO {
 
 	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
-	public void insertComments(Comments ins) throws DBException {
+	public void save(Comments ins) throws DBException {
 		String sql = "insert into comments (cmt_post_id,cmt_email,cmts,cmt_date) values (?,?,?,current_timestamp)";
 		try (Connection con = ConnectionUtil.conMethod(); PreparedStatement pst = con.prepareStatement(sql)) {
 
@@ -38,7 +39,7 @@ public class CommentsImpl implements CommentsDAO {
 		}
 	}
 
-	public int noOfComments(int cmtPostId) throws DBException {
+	public int countNoOfComments(int cmtPostId) throws DBException {
 		System.out.println(cmtPostId);
 		String sql = "select count(*) as no_of_comments from comments where cmt_post_id=?";
 		int totalcount = 0;
@@ -59,7 +60,7 @@ public class CommentsImpl implements CommentsDAO {
 		return totalcount;
 	}
 
-	public List<Comments> displayComments(Comments l) throws DBException {
+	public List<Comments> findAllComments(Comments l) throws DBException {
 		List<Comments> list = new ArrayList<Comments>();
 		String sql = "select cmt_email,cmt_date,cmts from comments where cmt_post_id=?";
 		try (Connection con = ConnectionUtil.conMethod(); PreparedStatement pst = con.prepareStatement(sql)) {
@@ -71,7 +72,7 @@ public class CommentsImpl implements CommentsDAO {
 
 				String email = rs.getString("cmt_email");
 				String cmt = rs.getString("cmts");
-				String date = rs.getString("cmt_date");
+				LocalDateTime date = rs.getTimestamp("cmt_date").toLocalDateTime();
 				Comments l1 = new Comments();
 				l1.setCmtEmail(email);
 				l1.setCmts(cmt);

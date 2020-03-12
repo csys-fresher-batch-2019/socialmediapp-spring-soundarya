@@ -7,21 +7,21 @@ import com.soundarya.mediaApp.exception.DBException;
 
 public interface PostsDAO {
 
-	public void addPosts(Posts add) throws DBException;
+	public void save(Posts add) throws DBException;
 
-	int NoOfPosts(String email) throws DBException;
+	int countNoOfPosts(String email) throws DBException;
 
 	public void updatePost(Posts up) throws DBException;
 
-	public List<Posts> display() throws DBException;
+	public List<Posts> findAllPosts() throws DBException;
 
-	public List<Posts> displayFriendsPost(String req) throws DBException;
+	public List<Posts> findAllFriendsPosts(String req) throws DBException;
 
-	public List<Posts> displayPublicPost() throws DBException;
+	public List<Posts> findAllPublicPosts() throws DBException;
 
-	public List<Posts> displayFriendsPost1(String acp) throws DBException;
+	public List<Posts> findAllFriendsPosts1(String acp) throws DBException;
 
 	public void deletePost(Posts d) throws DBException;
 
-	public List<Posts> MyPosts(String emailId) throws DBException;
+	public List<Posts> findMyPosts(String emailId) throws DBException;
 }

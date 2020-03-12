@@ -19,7 +19,7 @@ public class FriendRequestImpl implements FriendRequestDAO {
 	
 	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
-	public void insertRequest(FriendRequest ins) throws DBException {
+	public void save(FriendRequest ins) throws DBException {
 		String sql = "insert into friend_request (requestor,acceptor) values (?,?)";
 		try (Connection con = ConnectionUtil.conMethod(); PreparedStatement pst = con.prepareStatement(sql)) {
 
@@ -37,7 +37,7 @@ public class FriendRequestImpl implements FriendRequestDAO {
 		}
 	}
 
-	public List<FriendRequest> getFriendrequest(String requestor, String currentStatus) throws DBException {
+	public List<FriendRequest> findFriendrequest(String requestor, String currentStatus) throws DBException {
 		List<FriendRequest> l = new ArrayList<FriendRequest>();
 		String sql = "select * from friend_request where requestor = ? and current_status = ?";
 		try (Connection con = ConnectionUtil.conMethod(); PreparedStatement pst = con.prepareStatement(sql)) {
@@ -62,7 +62,7 @@ public class FriendRequestImpl implements FriendRequestDAO {
 
 	}
 
-	public List<FriendRequest> getRequestorList(String requestor) throws DBException {
+	public List<FriendRequest> findRequestorList(String requestor) throws DBException {
 		List<FriendRequest> l = new ArrayList<FriendRequest>();
 		String sql = "select * from friend_request where requestor = ?";
 		try (Connection con = ConnectionUtil.conMethod(); PreparedStatement pst = con.prepareStatement(sql)) {
@@ -87,7 +87,7 @@ public class FriendRequestImpl implements FriendRequestDAO {
 	}
 	// request for me
 
-	public List<FriendRequest> getAcceptorList(String acceptor) throws DBException {
+	public List<FriendRequest> findAcceptorList(String acceptor) throws DBException {
 		List<FriendRequest> l = new ArrayList<FriendRequest>();
 		String sql = "select * from friend_request where acceptor =?";
 		try (Connection con = ConnectionUtil.conMethod(); PreparedStatement pst = con.prepareStatement(sql)) {

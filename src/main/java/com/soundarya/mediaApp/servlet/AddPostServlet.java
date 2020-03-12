@@ -29,7 +29,7 @@ public class AddPostServlet extends HttpServlet {
 		PostsDAO po=DAOFactory.getPostsDAO();
 
 		try {
-			po.addPosts(p);
+			po.save(p);
 		} catch (DBException e) {
 			e.printStackTrace();
 		}

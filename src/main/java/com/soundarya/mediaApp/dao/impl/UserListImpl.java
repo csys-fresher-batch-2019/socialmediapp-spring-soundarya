@@ -1,10 +1,13 @@
 package com.soundarya.mediaApp.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.slf4j.LoggerFactory;
@@ -19,7 +22,7 @@ import com.soundarya.mediaApp.util.ConnectionUtil;
 public class UserListImpl implements UserListDAO {
 	private static final org.slf4j.Logger Logger = LoggerFactory.getLogger(IndexController.class);
 
-	public int noOfUsers() throws DBException {
+	public int countNoOfUsers() throws DBException {
 		String sql = "select count(*) as total_count from user_list where active_status='active'";
 		int totalcount = 0;
 		try (Connection con = ConnectionUtil.conMethod();
@@ -37,7 +40,7 @@ public class UserListImpl implements UserListDAO {
 		return totalcount;
 	}
 
-	public List<UserList> displayUser(UserList u) throws DBException {
+	public List<UserList> findUser(UserList u) throws DBException {
 		String sql = "select user_id,profile_pic,user_name,email,age,gender,dob,city,country,created_date,status,active_status from user_list  where email=?";
 		List<UserList> list = new ArrayList<UserList>();
 		try (Connection con = ConnectionUtil.conMethod(); PreparedStatement pst = con.prepareStatement(sql)) {
@@ -52,10 +55,10 @@ public class UserListImpl implements UserListDAO {
 				uc.setEmail(rs.getString("email"));
 				uc.setAge(rs.getInt("age"));
 				uc.setGender(rs.getString("gender"));
-				uc.setDob(rs.getDate("dob"));
+				uc.setDob(LocalDate.parse(rs.getString("dob")));
 				uc.setCity(rs.getString("city"));
 				uc.setCountry(rs.getString("country"));
-				uc.setCreatedDate(rs.getDate("created_date"));
+				uc.setCreatedDate(rs.getTimestamp("created_date").toLocalDateTime());
 				uc.setStatus(rs.getString("status"));
 				uc.setActivestatus(rs.getString("active_status"));
 
@@ -134,7 +137,7 @@ public class UserListImpl implements UserListDAO {
 		}
 	}
 
-	public List<UserList> searchByCityAndName(String a, String city) throws DBException {
+	public List<UserList> findByCityAndName(String a, String city) throws DBException {
 		String sql = "select profile_pic,user_name,email,age,gender from user_list where lower(user_name) like lower(?) and lower(city)=lower(?)";
 		List<UserList> list = new ArrayList<UserList>();
 		try (Connection con = ConnectionUtil.conMethod(); PreparedStatement pst = con.prepareStatement(sql)) {
@@ -164,7 +167,7 @@ public class UserListImpl implements UserListDAO {
 		return list;
 	}
 
-	public int insertUsers(UserList insert) throws DBException {
+	public int save(UserList insert) throws DBException {
 		String sql = "insert into user_list(user_id,user_name,email,age,gender,dob,city,country,created_date,status,user_password,profile_pic) values (us_id_s.nextval,?,?,?,?,?,?,?,current_timestamp,?,?,?)";
 		int rows = 0;
 		try (Connection con = ConnectionUtil.conMethod(); PreparedStatement pst = con.prepareStatement(sql)) {
@@ -175,7 +178,7 @@ public class UserListImpl implements UserListDAO {
 			pst.setString(2, insert.getEmail());
 			pst.setInt(3, insert.getAge());
 			pst.setString(4, insert.getGender());
-			pst.setDate(5, insert.getDob());
+			pst.setDate(5, Date.valueOf(insert.getDob()));
 			pst.setString(6, insert.getCity());
 			pst.setString(7, insert.getCountry());
 			pst.setString(8, insert.getStatus());

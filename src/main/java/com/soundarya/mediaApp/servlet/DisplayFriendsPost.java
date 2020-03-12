@@ -31,7 +31,7 @@ public class DisplayFriendsPost extends HttpServlet {
 		String n=(String)session.getAttribute("semail");
 		out.print(n);
 		try {
-			dis=us.displayFriendsPost(n);
+			dis=us.findAllFriendsPosts(n);
 		} catch (DBException e) {
 			e.printStackTrace();
 		}

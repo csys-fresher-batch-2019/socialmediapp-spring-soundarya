@@ -30,7 +30,7 @@ public class SendFriendRequestServlet extends HttpServlet {
 		FriendRequestDAO fr = DAOFactory.getFriendRequestDAO();
 
 		try {
-			fr.insertRequest(f);
+			fr.save(f);
 		} catch (DBException e1) {
 			e1.printStackTrace();
 		}

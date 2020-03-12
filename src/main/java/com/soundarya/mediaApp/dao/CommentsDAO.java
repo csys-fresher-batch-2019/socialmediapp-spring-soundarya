@@ -7,10 +7,10 @@ import com.soundarya.mediaApp.exception.DBException;
 
 public interface CommentsDAO {
 	
-		public void insertComments(Comments ins) throws DBException;
+		public void save(Comments ins) throws DBException;
 			
-		public int noOfComments(int cmtPostId) throws DBException;
+		public int countNoOfComments(int cmtPostId) throws DBException;
 		
-		public List<Comments> displayComments(Comments l) throws DBException;
+		public List<Comments> findAllComments(Comments l) throws DBException;
 
 }

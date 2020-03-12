@@ -11,23 +11,23 @@ import com.soundarya.mediaApp.factory.DAOFactory;
 
 public class LikesService {
 	LikesDAO dao=DAOFactory.getLikesDAO();
-	public void addLikes(Likes add) throws DBException, ServiceException{
+	public void save(Likes add) throws DBException, ServiceException{
 		try {
-			 dao.addLikes(add);
+			 dao.save(add);
 		} catch (DBException e) {	
 			throw new ServiceException(ServiceConstant.INVALID_SAVE);
 		}
 	}
-	public int noOfLikes(int likePostId) throws DBException, ServiceException{
+	public int countNoOfLikes(int likePostId) throws DBException, ServiceException{
 		try {
-			 return dao.noOfLikes(likePostId);
+			 return dao.countNoOfLikes(likePostId);
 		} catch (DBException e) {	
 			throw new ServiceException(ServiceConstant.INVALID_FIND);
 		}
 	}
-	List<Likes> displayLikes(Likes l) throws DBException, ServiceException{
+	List<Likes> findAllLikes(Likes l) throws DBException, ServiceException{
 		try {
-			 return dao.displayLikes(l);
+			 return dao.findAllLikes(l);
 		} catch (DBException e) {	
 			throw new ServiceException(ServiceConstant.INVALID_FIND);
 		}

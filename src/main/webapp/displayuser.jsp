@@ -33,37 +33,37 @@
 			<form action="displayuser.jsp">
 				<%
 					UserList u = new UserList();
-					UserListDAO us = DAOFactory.getUserListDAO();
+									UserListDAO us = DAOFactory.getUserListDAO();
 
-					List<UserList> display = new ArrayList<UserList>();
+									List<UserList> display = new ArrayList<UserList>();
 
-					String email = request.getParameter("email");
-					u.setEmail(request.getParameter("email"));
-					try {
-						display = us.displayUser(u);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+									String email = request.getParameter("email");
+									u.setEmail(request.getParameter("email"));
+									try {
+										display = us.findUser(u);
+									} catch (Exception e) {
+										e.printStackTrace();
+									}
 
-					if (email != null) {
-						out.print("<center><h3>User's Profile</h3></center>");
-						out.print(
-								"<table class=table table-bordered align=center><tr><th>User Id</th><th>Profile Picture</th><th>User Name</th><th>Email</th><th>Age</th><th>Gender</th><th>DOB</th><th>City</th><th>Country</th><th>Created Date</th><th>Status</th><th>Active Status</th></tr>");
+									if (email != null) {
+										out.print("<center><h3>User's Profile</h3></center>");
+										out.print(
+												"<table class=table table-bordered align=center><tr><th>User Id</th><th>Profile Picture</th><th>User Name</th><th>Email</th><th>Age</th><th>Gender</th><th>DOB</th><th>City</th><th>Country</th><th>Created Date</th><th>Status</th><th>Active Status</th></tr>");
 
-						for (UserList userListClass : display) {
-							System.out.println(userListClass.display());
-							out.print("<tr><td>" + userListClass.getUserId() + "</td><td><img src=images/"
-									+ userListClass.getProfilePic() + " height='100' width='100'> </td><td>"
-									+ userListClass.getUserName() + "</td><td>" + userListClass.getEmail() + "</td><td>"
-									+ userListClass.getAge() + "</td><td>" + userListClass.getGender() + "</td><td>"
-									+ userListClass.getDob() + "</td><td>" + userListClass.getCity() + "</td><td>"
-									+ userListClass.getCountry() + "</td><td>" + userListClass.getCreatedDate() + "</td><td>"
-									+ userListClass.getStatus() + "</td><td>" + userListClass.getActivestatus() + "</td></tr>");
-							out.print("<br>");
-						}
+										for (UserList userListClass : display) {
+											//System.out.println(userListClass.findAllPosts());
+											out.print("<tr><td>" + userListClass.getUserId() + "</td><td><img src=images/"
+													+ userListClass.getProfilePic() + " height='100' width='100'> </td><td>"
+													+ userListClass.getUserName() + "</td><td>" + userListClass.getEmail() + "</td><td>"
+													+ userListClass.getAge() + "</td><td>" + userListClass.getGender() + "</td><td>"
+													+ userListClass.getDob() + "</td><td>" + userListClass.getCity() + "</td><td>"
+													+ userListClass.getCountry() + "</td><td>" + userListClass.getCreatedDate() + "</td><td>"
+													+ userListClass.getStatus() + "</td><td>" + userListClass.getActivestatus() + "</td></tr>");
+											out.print("<br>");
+										}
 
-						out.print("</table>");
-					}
+										out.print("</table>");
+									}
 				%>
 			</form>
 	</font></b>

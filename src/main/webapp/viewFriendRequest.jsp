@@ -29,7 +29,7 @@ List<FriendRequest> view=new ArrayList<FriendRequest>();
 //(String)session.getAttribute("semail")
 //String acceptor=request.getParameter("acceptor");
 try {
-	view=f.getAcceptorList(acp);
+	view=f.findAcceptorList(acp);
 }
 catch(Exception e)
 {

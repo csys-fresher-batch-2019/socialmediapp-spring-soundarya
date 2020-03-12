@@ -31,47 +31,47 @@
 		<b> <font face="Comic Sans MS"> <%
  	String n = (String) session.getAttribute("semail");
 
- 	PostsDAO po = DAOFactory.getPostsDAO();
+  	PostsDAO po = DAOFactory.getPostsDAO();
 
- 	List<Posts> view = new ArrayList<Posts>();
- 	try {
- 		view = po.MyPosts(n);
- 	} catch (Exception e) {
- 		e.printStackTrace();
- 	}
- 	out.print("<div style=margin-top:50px;><center><h3>Posts</h3></center></div>");
- 	out.print("<table class=table table-striped align=center><tr><th>Post</th><th>Details</th><th></th></tr>");
+  	List<Posts> view = new ArrayList<Posts>();
+  	try {
+  		view = po.findMyPosts(n);
+  	} catch (Exception e) {
+  		e.printStackTrace();
+  	}
+  	out.print("<div style=margin-top:50px;><center><h3>Posts</h3></center></div>");
+  	out.print("<table class=table table-striped align=center><tr><th>Post</th><th>Details</th><th></th></tr>");
 
- 	for (Posts postsClass : view) {
- 		if (postsClass.getPostType().contains(".mp4")) {
- 			out.print("<tr><td><video width='200' height='200' controls> <source src='videos/"
- 					+ postsClass.getPostType() + "' type='video/mp4'></video> </td><td>Id:"
- 					+ postsClass.getPostId() + "<br>Email:" + postsClass.getEmail() + "<br>caption:"
- 					+ postsClass.getCaption() + "<br>Date Posted:" + postsClass.getDatePosted()
- 					+ "</td><td><a href=count.jsp?id=" + postsClass.getPostId()
- 					+ "><button type=button class=btn btn-success>No of Likes&Comments</button></a><br><br><a href=deletepost.jsp?postid="
- 					+ postsClass.getPostId()
- 					+ "><button type=button class=btn btn-success>Delete</button></a><br><br><a href=view.jsp?post_id="
- 					+ postsClass.getPostId()
- 					+ "><button type=button class=btn btn-success>View comments and likes</button></a></td></tr>");
- 			out.print("<br>");
- 		}
- 		//if(postsClass.getPostType().contains(".jpg"))
- 		else {
- 			out.print("<tr><td><img src=images/" + postsClass.getPostType()
- 					+ " height='200' width='200'> </td><td>Id:" + postsClass.getPostId() + "<br>Email:"
- 					+ postsClass.getEmail() + "<br>caption:" + postsClass.getCaption() + "<br>Date Posted:"
- 					+ postsClass.getDatePosted() + "</td><td><a href=count.jsp?id=" + postsClass.getPostId()
- 					+ "><button type=button class=btn btn-success>No of Likes&Comments</button></a><br><br><a href=deletepost.jsp?postid="
- 					+ postsClass.getPostId()
- 					+ "><button type=button class=btn btn-success>Delete</button></a><br><br><a href=view.jsp?post_id="
- 					+ postsClass.getPostId()
- 					+ "><button type=button class=btn btn-success>View comments and likes</button></a></td></tr>");
- 			out.print("<br>");
- 		}
+  	for (Posts postsClass : view) {
+  		if (postsClass.getPostType().contains(".mp4")) {
+  			out.print("<tr><td><video width='200' height='200' controls> <source src='videos/"
+  					+ postsClass.getPostType() + "' type='video/mp4'></video> </td><td>Id:"
+  					+ postsClass.getPostId() + "<br>Email:" + postsClass.getEmail() + "<br>caption:"
+  					+ postsClass.getCaption() + "<br>Date Posted:" + postsClass.getDatePosted()
+  					+ "</td><td><a href=count.jsp?id=" + postsClass.getPostId()
+  					+ "><button type=button class=btn btn-success>No of Likes&Comments</button></a><br><br><a href=deletepost.jsp?postid="
+  					+ postsClass.getPostId()
+  					+ "><button type=button class=btn btn-success>Delete</button></a><br><br><a href=view.jsp?post_id="
+  					+ postsClass.getPostId()
+  					+ "><button type=button class=btn btn-success>View comments and likes</button></a></td></tr>");
+  			out.print("<br>");
+  		}
+  		//if(postsClass.getPostType().contains(".jpg"))
+  		else {
+  			out.print("<tr><td><img src=images/" + postsClass.getPostType()
+  					+ " height='200' width='200'> </td><td>Id:" + postsClass.getPostId() + "<br>Email:"
+  					+ postsClass.getEmail() + "<br>caption:" + postsClass.getCaption() + "<br>Date Posted:"
+  					+ postsClass.getDatePosted() + "</td><td><a href=count.jsp?id=" + postsClass.getPostId()
+  					+ "><button type=button class=btn btn-success>No of Likes&Comments</button></a><br><br><a href=deletepost.jsp?postid="
+  					+ postsClass.getPostId()
+  					+ "><button type=button class=btn btn-success>Delete</button></a><br><br><a href=view.jsp?post_id="
+  					+ postsClass.getPostId()
+  					+ "><button type=button class=btn btn-success>View comments and likes</button></a></td></tr>");
+  			out.print("<br>");
+  		}
 
- 	}
- 	out.print("</table>");
+  	}
+  	out.print("</table>");
  %>
 
 		</font></b>

@@ -12,18 +12,18 @@ import com.soundarya.mediaApp.factory.DAOFactory;
 public class PostsService {
 	PostsDAO dao=DAOFactory.getPostsDAO();
 
-	public void addPosts(Posts add) throws DBException, ServiceException{
+	public void save(Posts add) throws DBException, ServiceException{
 		try {
-			dao.addPosts(add);
+			dao.save(add);
 		} catch (DBException e) {
 			
 			throw new ServiceException(ServiceConstant.INVALID_SAVE);
 		}
 	}
 
-	int NoOfPosts(String email) throws DBException, ServiceException{
+	int countNoOfPosts(String email) throws DBException, ServiceException{
 		try {
-			return dao.NoOfPosts(email);
+			return dao.countNoOfPosts(email);
 		} catch (DBException e) {
 			
 			throw new ServiceException(ServiceConstant.INVALID_FIND);
@@ -38,36 +38,36 @@ public class PostsService {
 			throw new ServiceException(ServiceConstant.INVALID_UPDATE);
 		}
 	}
-	public List<Posts> display() throws DBException, ServiceException{
+	public List<Posts> findAllPosts() throws DBException, ServiceException{
 		try {
-			return dao.display();
+			return dao.findAllPosts();
 		} catch (DBException e) {
 			
 			throw new ServiceException(ServiceConstant.INVALID_FIND);
 		}
 	}
 
-	public List<Posts> displayFriendsPost(String req) throws DBException, ServiceException{
+	public List<Posts> findAllFriendsPosts(String req) throws DBException, ServiceException{
 		try {
-			return dao.displayFriendsPost(req);
+			return dao.findAllFriendsPosts(req);
 		} catch (DBException e) {
 			
 			throw new ServiceException(ServiceConstant.INVALID_FIND);
 		}
 	}
 
-	public List<Posts> displayPublicPost() throws DBException, ServiceException{
+	public List<Posts> findAllPublicPosts() throws DBException, ServiceException{
 		try {
-			return dao.displayPublicPost();
+			return dao.findAllPublicPosts();
 		} catch (DBException e) {
 			
 			throw new ServiceException(ServiceConstant.INVALID_FIND);
 		}
 	}
 	
-	public List<Posts> displayFriendsPost1(String acp) throws DBException, ServiceException{
+	public List<Posts> findAllFriendsPosts1(String acp) throws DBException, ServiceException{
 		try {
-			return dao.displayFriendsPost1(acp);
+			return dao.findAllFriendsPosts1(acp);
 		} catch (DBException e) {
 			
 			throw new ServiceException(ServiceConstant.INVALID_FIND);
@@ -83,9 +83,9 @@ public class PostsService {
 		}
 	}
 	
-	public List<Posts> MyPosts(String emailId) throws DBException, ServiceException{
+	public List<Posts> findMyPosts(String emailId) throws DBException, ServiceException{
 		try {
-			return dao.MyPosts(emailId);
+			return dao.findMyPosts(emailId);
 		} catch (DBException e) {
 			
 			throw new ServiceException(ServiceConstant.INVALID_FIND);

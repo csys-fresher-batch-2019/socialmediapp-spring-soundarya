@@ -3,6 +3,7 @@ package com.soundarya.mediaApp.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class LikesImpl implements LikesDAO {
 
 	private static final org.slf4j.Logger Logger = LoggerFactory.getLogger(IndexController.class);
 
-	public void addLikes(Likes add) throws DBException {
+	public void save(Likes add) throws DBException {
 		String sql = "insert into likes(like_post_id,like_email,like_date) values (?,?,current_timestamp)";
 		try (Connection con = ConnectionUtil.conMethod(); PreparedStatement pst = con.prepareStatement(sql)) {
 
@@ -38,7 +39,7 @@ public class LikesImpl implements LikesDAO {
 	}
 
 	@Override
-	public int noOfLikes(int likePostId) throws DBException {
+	public int countNoOfLikes(int likePostId) throws DBException {
 		System.out.println(likePostId);
 		String sql = "select count(*) as no_of_likes from likes where like_post_id=?";
 		int totalcount = 0;
@@ -60,7 +61,7 @@ public class LikesImpl implements LikesDAO {
 	}
 
 	@Override
-	public List<Likes> displayLikes(Likes l) throws DBException {
+	public List<Likes> findAllLikes(Likes l) throws DBException {
 		List<Likes> list = new ArrayList<Likes>();
 		String sql = "select like_email,like_date from likes where like_post_id=?";
 		try (Connection con = ConnectionUtil.conMethod(); PreparedStatement pst = con.prepareStatement(sql)) {
@@ -71,7 +72,7 @@ public class LikesImpl implements LikesDAO {
 			while (rs.next()) {
 
 				String email = rs.getString("like_email");
-				String date = rs.getString("like_date");
+				LocalDateTime date = rs.getTimestamp("like_date").toLocalDateTime();
 				Likes l1 = new Likes();
 				l1.setLikeEmail(email);
 				l1.setLikeDate(date);

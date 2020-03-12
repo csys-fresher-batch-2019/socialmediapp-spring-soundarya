@@ -12,31 +12,31 @@ import com.soundarya.mediaApp.factory.DAOFactory;
 public class FriendRequestService {
 	FriendRequestDAO dao=DAOFactory.getFriendRequestDAO();
 
-	void insertRequest(FriendRequest ins) throws DBException, ServiceException{
+	void save(FriendRequest ins) throws DBException, ServiceException{
 		try {
-			 dao.insertRequest(ins);
+			 dao.save(ins);
 		} catch (DBException e) {	
 			throw new ServiceException(ServiceConstant.INVALID_SAVE);
 		}
 	}
-	List<FriendRequest> getFriendrequest(String requestor, String s) throws DBException, ServiceException{
+	List<FriendRequest> findFriendrequest(String requestor, String s) throws DBException, ServiceException{
 		try {
-			 return dao.getFriendrequest(requestor,s);
+			 return dao.findFriendrequest(requestor,s);
 		} catch (DBException e) {	
 			throw new ServiceException(ServiceConstant.INVALID_FIND);
 		}
 	}
-	List<FriendRequest> getRequestorList(String requestor) throws DBException, ServiceException
+	List<FriendRequest> findRequestorList(String requestor) throws DBException, ServiceException
 	{
 		try {
-			 return dao.getRequestorList(requestor);
+			 return dao.findRequestorList(requestor);
 		} catch (DBException e) {	
 			throw new ServiceException(ServiceConstant.INVALID_FIND);
 		}
 	}
-	List<FriendRequest> getAcceptorList(String requestor) throws DBException, ServiceException{
+	List<FriendRequest> findAcceptorList(String requestor) throws DBException, ServiceException{
 		try {
-			 return dao.getAcceptorList(requestor);
+			 return dao.findAcceptorList(requestor);
 		} catch (DBException e) {	
 			throw new ServiceException(ServiceConstant.INVALID_FIND);
 		}

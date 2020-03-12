@@ -52,7 +52,7 @@
 		<%
 			UserListDAO u = DAOFactory.getUserListDAO();
 			int count = 0;
-			count = u.noOfUsers();
+			count = u.countNoOfUsers();
 			System.out.println(count);
 			out.print("<center><h3>Number of Users:" + count + "</h3></center>");
 		%>

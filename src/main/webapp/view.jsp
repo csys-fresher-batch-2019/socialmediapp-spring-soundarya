@@ -25,7 +25,7 @@ List<Likes> list = new ArrayList<Likes>();
 LikesDAO d=DAOFactory.getLikesDAO();
 
 dis.setLikePostId(Integer.parseInt(request.getParameter("post_id")));
-list=d.displayLikes(dis);
+list=d.findAllLikes(dis);
 
 out.print("<div class=container><center><h3>Liked by</h3></center>");
 out.print("<table class=table table-striped><thead><tr><th>Email</th><th>Time</th></tr><thead>");
@@ -42,14 +42,14 @@ CommentsDAO display=DAOFactory.getCommentsDAO();
 
 List<Comments> li = new ArrayList<Comments>();
 di.setCmtPostId(Integer.parseInt(request.getParameter("post_id")));
-li=display.displayComments(di);
+li=display.findAllComments(di);
 
 out.print("<div class=container><center><h3>Commented by</h3></center>");
 out.print("<table class=table table-striped><thead><tr><th>Email</th><th>Time</th><th>Comments</th></tr><thead>");
 
 for (Comments commentsClass : li) {
 	
-		out.print("<tr><td>"+commentsClass.getCmtEmail()+"</td><td>"+commentsClass.getCmtDate1()+"</td><td>"+commentsClass.getCmts()+"</td></tr>");
+		out.print("<tr><td>"+commentsClass.getCmtEmail()+"</td><td>"+commentsClass.getCmtDate()+"</td><td>"+commentsClass.getCmts()+"</td></tr>");
 		out.print("<br>");
 }
 out.print("</table></div>");

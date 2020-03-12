@@ -19,7 +19,7 @@ import com.soundarya.mediaApp.util.ConnectionUtil;
 public class PostsImpl implements PostsDAO {
 	private static final org.slf4j.Logger Logger = LoggerFactory.getLogger(IndexController.class);
 
-	public int NoOfPosts(String email) throws DBException {
+	public int countNoOfPosts(String email) throws DBException {
 		String sql = "select count(*) as no_of_posts from posts where email=?";
 		try (Connection con = ConnectionUtil.conMethod(); PreparedStatement pst = con.prepareStatement(sql)) {
 			pst.setString(1, email);
@@ -56,7 +56,7 @@ public class PostsImpl implements PostsDAO {
 		}
 	}
 
-	public void addPosts(Posts add) throws DBException {
+	public void save(Posts add) throws DBException {
 
 		String sql = "insert into posts (post_id,email,post_type,caption,viewability,date_posted) values (pos_id_se.nextval,?,?,?,?,current_timestamp)";
 		try (Connection con = ConnectionUtil.conMethod(); PreparedStatement pst = con.prepareStatement(sql)) {
@@ -77,7 +77,7 @@ public class PostsImpl implements PostsDAO {
 
 	}
 
-	public List<Posts> display() throws DBException {
+	public List<Posts> findAllPosts() throws DBException {
 		List<Posts> list = new ArrayList<Posts>();
 		String sql = "select u.user_name,p.email,p.post_type,p.caption,p.date_posted from user_list u inner join posts p on u.email=p.email ";
 		try (Connection con = ConnectionUtil.conMethod();
@@ -87,23 +87,14 @@ public class PostsImpl implements PostsDAO {
 			Logger.debug(sql);
 
 			while (rs.next()) {
-				String username = rs.getString("user_name");
-				Logger.debug(username);
-				String email = rs.getString("email");
-				Logger.debug(email);
-				String posttype = rs.getString("post_type");
-				Logger.debug(posttype);
-				String caption = rs.getString("caption");
-				Logger.debug(caption);
-				String datePosted = rs.getString("date_posted");
-				Logger.debug(datePosted);
+				
 
 				Posts p = new Posts();
-				p.setUserName(username);
-				p.setEmail(email);
-				p.setPostType(posttype);
-				p.setCaption(caption);
-				p.setDatePosted(datePosted);
+				p.setUserName(rs.getString("user_name"));
+				p.setEmail(rs.getString("email"));
+				p.setPostType(rs.getString("post_type"));
+				p.setCaption(rs.getString("caption"));
+				p.setDatePosted(rs.getTimestamp("date_posted").toLocalDateTime());
 
 				list.add(p);
 
@@ -117,7 +108,7 @@ public class PostsImpl implements PostsDAO {
 		return list;
 	}
 
-	public List<Posts> displayFriendsPost(String req) throws DBException {
+	public List<Posts> findAllFriendsPosts(String req) throws DBException {
 		List<Posts> list = new ArrayList<Posts>();
 		String sql = "select * from posts where  email in (\r\n"
 				+ "select acceptor from friend_request where requestor = ? and current_status='accepted' ) order by date_posted desc";
@@ -131,7 +122,7 @@ public class PostsImpl implements PostsDAO {
 				p.setEmail(rs.getString("email"));
 				p.setPostType(rs.getString("post_type"));
 				p.setCaption(rs.getString("caption"));
-				p.setDatePosted(rs.getString("date_posted"));
+				p.setDatePosted(rs.getTimestamp("date_posted").toLocalDateTime());
 
 				list.add(p);
 
@@ -146,7 +137,7 @@ public class PostsImpl implements PostsDAO {
 		return list;
 	}
 
-	public List<Posts> displayFriendsPost1(String req) throws DBException {
+	public List<Posts> findAllFriendsPosts1(String req) throws DBException {
 		List<Posts> list = new ArrayList<Posts>();
 		String sql = "select * from posts where  email in (\r\n"
 				+ "select requestor from friend_request where acceptor = ? and current_status='accepted' ) order by date_posted desc";
@@ -159,7 +150,8 @@ public class PostsImpl implements PostsDAO {
 				p.setEmail(rs.getString("email"));
 				p.setPostType(rs.getString("post_type"));
 				p.setCaption(rs.getString("caption"));
-				p.setDatePosted(rs.getString("date_posted"));
+				p.setDatePosted(rs.getTimestamp("date_posted").toLocalDateTime());
+
 
 				list.add(p);
 
@@ -174,7 +166,7 @@ public class PostsImpl implements PostsDAO {
 		return list;
 	}
 
-	public List<Posts> displayPublicPost() throws DBException {
+	public List<Posts> findAllPublicPosts() throws DBException {
 		List<Posts> list = new ArrayList<Posts>();
 		String sql = "select * from posts where viewability='public'";
 		try (Connection con = ConnectionUtil.conMethod();
@@ -188,7 +180,7 @@ public class PostsImpl implements PostsDAO {
 				p.setEmail(rs.getString("email"));
 				p.setPostType(rs.getString("post_type"));
 				p.setCaption(rs.getString("caption"));
-				p.setDatePosted(rs.getString("date_posted"));
+				p.setDatePosted(rs.getTimestamp("date_posted").toLocalDateTime());
 
 				list.add(p);
 
@@ -201,7 +193,7 @@ public class PostsImpl implements PostsDAO {
 		return list;
 	}
 
-	public List<Posts> MyPosts(String emailId) throws DBException {
+	public List<Posts> findMyPosts(String emailId) throws DBException {
 		List<Posts> list = new ArrayList<Posts>();
 		String sql = "select * from posts where email=?";
 		try (Connection con = ConnectionUtil.conMethod(); PreparedStatement pst = con.prepareStatement(sql)) {
@@ -213,7 +205,7 @@ public class PostsImpl implements PostsDAO {
 				p.setEmail(rs.getString("email"));
 				p.setPostType(rs.getString("post_type"));
 				p.setCaption(rs.getString("caption"));
-				p.setDatePosted(rs.getString("date_posted"));
+				p.setDatePosted(rs.getTimestamp("date_posted").toLocalDateTime());
 
 				list.add(p);
 

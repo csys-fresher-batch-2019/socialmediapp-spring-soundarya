@@ -31,7 +31,7 @@ public class CommentsServlet extends HttpServlet {
 		CommentsDAO co = DAOFactory.getCommentsDAO();
 
 		try {
-			co.insertComments(c);
+			co.save(c);
 		} catch (DBException e) {
 
 			e.printStackTrace();

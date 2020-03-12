@@ -12,9 +12,9 @@ import com.soundarya.mediaApp.factory.DAOFactory;
 public class UserListService {
 	UserListDAO dao=DAOFactory.getUserListDAO();
 	
-	public int insertUsers(UserList u) throws ServiceException,DBException{
+	public int save(UserList u) throws ServiceException,DBException{
 		try {
-			return dao.insertUsers(u);
+			return dao.save(u);
 		}
 		catch(DBException e)
 		{
@@ -22,9 +22,9 @@ public class UserListService {
 		}
 	}
 	
-	List<UserList> searchByCityAndName(String a, String city) throws DBException, ServiceException{
+	List<UserList> findByCityAndName(String a, String city) throws DBException, ServiceException{
 		try {
-			return dao.searchByCityAndName(a,city);
+			return dao.findByCityAndName(a,city);
 		}
 		catch(DBException e)
 		{
@@ -33,9 +33,9 @@ public class UserListService {
 		
 	}
 
-	int noOfUsers() throws DBException, ServiceException{
+	int countNoOfUsers() throws DBException, ServiceException{
 		try {
-			return dao.noOfUsers();
+			return dao.countNoOfUsers();
 		}
 		catch(DBException e)
 		{
@@ -43,9 +43,9 @@ public class UserListService {
 		}
 	}
 
-	public List<UserList> displayUser(UserList u) throws DBException, ServiceException{
+	public List<UserList> findUser(UserList u) throws DBException, ServiceException{
 		try {
-			return dao.displayUser(u);
+			return dao.findUser(u);
 		}
 		catch(DBException e)
 		{

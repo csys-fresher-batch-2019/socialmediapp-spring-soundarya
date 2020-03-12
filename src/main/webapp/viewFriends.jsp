@@ -34,13 +34,13 @@
 
 <form action="viewFriends.jsp" method="post">
 <%
-FriendRequestDAO f=DAOFactory.getFriendRequestDAO();
+	FriendRequestDAO f=DAOFactory.getFriendRequestDAO();
 
 List<FriendRequest> view=new ArrayList<FriendRequest>();
 String n=(String)session.getAttribute("semail"); 
 String sts=request.getParameter("status");
 try {
-	view=f.getFriendrequest(n, sts);
+	view=f.findFriendrequest(n, sts);
 }
 catch(Exception e)
 {

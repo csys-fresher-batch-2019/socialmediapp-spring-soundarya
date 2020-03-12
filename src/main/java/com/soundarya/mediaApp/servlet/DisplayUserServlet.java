@@ -29,7 +29,7 @@ public class DisplayUserServlet extends HttpServlet {
 		u.setEmail(request.getParameter("email"));
 		
 		 try {
-				display=us.displayUser(u);
+				display=us.findUser(u);
 			}
 		catch(Exception e)
 		{

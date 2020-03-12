@@ -111,12 +111,11 @@ window.onclick = function(event) {
 <font face="Comic Sans MS">
 <form >
 <%
-	
 	PostsDAO po=DAOFactory.getPostsDAO();
 
 List<Posts> dis=new ArrayList<Posts>();
 out.print("<div class=container ><table class=table table-striped align=center><tr><th>Post</th><th>Details</th></tr>");
-dis=po.displayFriendsPost(n);
+dis=po.findAllFriendsPosts(n);
 for (Posts postsClass : dis) {
 	 if(postsClass.getPostType().contains(".mp4"))
 	{
@@ -132,7 +131,7 @@ for (Posts postsClass : dis) {
 	
 }
 
-dis=po.displayFriendsPost1(n);
+dis=po.findAllFriendsPosts1(n);
 for (Posts postsClass : dis) {
 	if(postsClass.getPostType().contains(".mp4"))
 	{

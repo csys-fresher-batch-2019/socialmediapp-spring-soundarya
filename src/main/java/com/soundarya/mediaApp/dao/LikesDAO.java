@@ -7,10 +7,10 @@ import com.soundarya.mediaApp.exception.DBException;
 
 public interface LikesDAO {
 
-	public void addLikes(Likes add) throws DBException;
+	public void save(Likes add) throws DBException;
 	
-	public int noOfLikes(int likePostId) throws DBException;
+	public int countNoOfLikes(int likePostId) throws DBException;
 	
-	List<Likes> displayLikes(Likes l) throws DBException;
+	List<Likes> findAllLikes(Likes l) throws DBException;
 
 }

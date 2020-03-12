@@ -12,23 +12,23 @@ import com.soundarya.mediaApp.factory.DAOFactory;
 public class CommentsService {
 	CommentsDAO dao=DAOFactory.getCommentsDAO();
 
-	public void insertComments(Comments ins) throws DBException, ServiceException{
+	public void save(Comments ins) throws DBException, ServiceException{
 		try {
-			 dao.insertComments(ins);
+			 dao.save(ins);
 		} catch (DBException e) {	
 			throw new ServiceException(ServiceConstant.INVALID_SAVE);
 		}
 	}
-	public int noOfComments(int cmtPostId) throws DBException, ServiceException{
+	public int countNoOfComments(int cmtPostId) throws DBException, ServiceException{
 		try {
-			 return dao.noOfComments(cmtPostId);
+			 return dao.countNoOfComments(cmtPostId);
 		} catch (DBException e) {	
 			throw new ServiceException(ServiceConstant.INVALID_FIND);
 		}
 	}
-	public List<Comments> displayComments(Comments l) throws DBException, ServiceException{
+	public List<Comments> findAllComments(Comments l) throws DBException, ServiceException{
 		try {
-			 return dao.displayComments(l);
+			 return dao.findAllComments(l);
 		} catch (DBException e) {	
 			throw new ServiceException(ServiceConstant.INVALID_FIND);
 		}

@@ -17,10 +17,10 @@
 			int pid = Integer.parseInt(request.getParameter("id"));
 			LikesDAO l = DAOFactory.getLikesDAO();
 			int cnt = 0, cnt1 = 0;
-			cnt = l.noOfLikes(pid);
+			cnt = l.countNoOfLikes(pid);
 
 			CommentsDAO c = DAOFactory.getCommentsDAO();
-			cnt1 = c.noOfComments(pid);
+			cnt1 = c.countNoOfComments(pid);
 
 			session.setAttribute("scnt", cnt);
 			session.setAttribute("scnt1", cnt1);
