@@ -1,9 +1,9 @@
-<%@page import="com.soundarya.mediaApp.domain.Posts"%>
-<%@page import="com.soundarya.mediaApp.factory.DAOFactory"%>
+<%@page import="com.soundarya.socialmedia.domain.Posts"%>
+<%@page import="com.soundarya.socialmedia.factory.DAOFactory"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="com.soundarya.mediaApp.dao.impl.PostsImpl"%>
-<%@page import="com.soundarya.mediaApp.dao.PostsDAO"%>
+<%@page import="com.soundarya.socialmedia.dao.impl.PostsImpl"%>
+<%@page import="com.soundarya.socialmedia.dao.PostsDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.io.PrintWriter"%>

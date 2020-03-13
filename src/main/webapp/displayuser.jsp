@@ -1,10 +1,10 @@
-<%@page import="com.soundarya.mediaApp.domain.UserList"%>
-<%@page import="com.soundarya.mediaApp.factory.DAOFactory"%>
-<%@page import="com.soundarya.mediaApp.domain.UserList"%>
+<%@page import="com.soundarya.socialmedia.domain.UserList"%>
+<%@page import="com.soundarya.socialmedia.factory.DAOFactory"%>
+<%@page import="com.soundarya.socialmedia.domain.UserList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="com.soundarya.mediaApp.dao.impl.UserListImpl"%>
-<%@page import="com.soundarya.mediaApp.dao.UserListDAO"%>
+<%@page import="com.soundarya.socialmedia.dao.impl.UserListImpl"%>
+<%@page import="com.soundarya.socialmedia.dao.UserListDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@ include file="header2.html"%>

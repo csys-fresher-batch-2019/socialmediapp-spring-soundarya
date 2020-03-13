@@ -1,6 +1,6 @@
-<%@page import="com.soundarya.mediaApp.dao.LikesDAO"%>
-<%@page import="com.soundarya.mediaApp.factory.DAOFactory"%>
-<%@page import="com.soundarya.mediaApp.dao.CommentsDAO"%>
+<%@page import="com.soundarya.socialmedia.dao.LikesDAO"%>
+<%@page import="com.soundarya.socialmedia.factory.DAOFactory"%>
+<%@page import="com.soundarya.socialmedia.dao.CommentsDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 

@@ -1,6 +1,6 @@
-<%@page import="com.soundarya.mediaApp.factory.DAOFactory"%>
-<%@page import="com.soundarya.mediaApp.dao.FriendRequestDAO"%>
-<%@page import="com.soundarya.mediaApp.domain.FriendRequest"%>
+<%@page import="com.soundarya.socialmedia.factory.DAOFactory"%>
+<%@page import="com.soundarya.socialmedia.dao.FriendRequestDAO"%>
+<%@page import="com.soundarya.socialmedia.domain.FriendRequest"%>
 <%@page import="com.soundarya.socialmedia.factory.DAOFactory"%>
 <%@page import="com.soundarya.socialmedia.domain.FriendRequest"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

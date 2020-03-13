@@ -1,9 +1,9 @@
-<%@page import="com.soundarya.mediaApp.domain.Posts"%>
-<%@page import="com.soundarya.mediaApp.factory.DAOFactory"%>
+<%@page import="com.soundarya.socialmedia.domain.Posts"%>
+<%@page import="com.soundarya.socialmedia.factory.DAOFactory"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="com.soundarya.mediaApp.dao.impl.PostsImpl"%>
-<%@page import="com.soundarya.mediaApp.dao.PostsDAO"%>
+<%@page import="com.soundarya.socialmedia.dao.impl.PostsImpl"%>
+<%@page import="com.soundarya.socialmedia.dao.PostsDAO"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

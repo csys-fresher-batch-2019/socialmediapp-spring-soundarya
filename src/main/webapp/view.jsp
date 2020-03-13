@@ -1,8 +1,8 @@
-<%@page import="com.soundarya.mediaApp.dao.CommentsDAO"%>
-<%@page import="com.soundarya.mediaApp.domain.Comments"%>
-<%@page import="com.soundarya.mediaApp.factory.DAOFactory"%>
-<%@page import="com.soundarya.mediaApp.dao.LikesDAO"%>
-<%@page import="com.soundarya.mediaApp.domain.Likes"%>
+<%@page import="com.soundarya.socialmedia.dao.CommentsDAO"%>
+<%@page import="com.soundarya.socialmedia.domain.Comments"%>
+<%@page import="com.soundarya.socialmedia.factory.DAOFactory"%>
+<%@page import="com.soundarya.socialmedia.dao.LikesDAO"%>
+<%@page import="com.soundarya.socialmedia.domain.Likes"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
        <%@page import="java.util.List" %>
